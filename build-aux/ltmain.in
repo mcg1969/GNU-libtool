@@ -4857,6 +4857,13 @@ func_mode_link ()
 	  # We need an absolute path.
 	  case $arg in
 	  [\\/]* | [A-Za-z]:[\\/]*) ;;
+          @rpath* | @loader_path* | @executable_path*)
+            case $host in
+            *-*-rhapsody* | *-*-darwin*) 
+              ;;
+            *)
+              func_fatal_error "only absolute run-paths are allowed"
+              ;;
 	  *)
 	    func_fatal_error "only absolute run-paths are allowed"
 	    ;;
@@ -5180,6 +5187,13 @@ func_mode_link ()
 	# We need an absolute path.
 	case $dir in
 	[\\/]* | [A-Za-z]:[\\/]*) ;;
+        @rpath* | @loader_path* | @executable_path*)
+          case $host in
+          *-*-rhapsody* | *-*-darwin*) 
+            ;;
+          *)
+            func_fatal_error "only absolute run-paths are allowed"
+            ;;
 	=*)
 	  func_stripname '=' '' "$dir"
 	  dir=$lt_sysroot$func_stripname_result
