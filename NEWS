@@ -34,6 +34,11 @@ NEWS - list of user-visible changes between releases of GNU Libtool
 
         make check-local TESTSUITEFLAGS='-k "!expensive"'
 
+  - On Mac OSX, the '-rpath' and '-R' flags now accept paths that begin
+    with the '@' symbol. Mac OS uses an '@rpath/' prefix in an install
+    name for dynamic libraries whose locations are to be resolved at
+    run time, facilitating relocatable application bundles.
+
 ** Bug fixes:
 
   - Fix a long-standing latent bug in autom4te include path for autotests
